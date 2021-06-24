@@ -24,7 +24,6 @@ public class LibraryManagement {
                             case 1:
                                 System.out.println("which book you want");
                                 BookManagement.fetching(current);
-                                details(current);
                                 break;
                             case 2:
                                 BookManagement.showAvailableBooks();
@@ -33,7 +32,6 @@ public class LibraryManagement {
                             case 3:
                                 System.out.println("which book you return");
                                 BookManagement.returning(current);
-                                details(current);
                                 break;
                             case 4:
                                 details(current);
@@ -57,7 +55,7 @@ public class LibraryManagement {
         {
             System.out.println(current.getName()+" "+current.getPassword()+" "+current.getUserid());
             for(Book b:User.booksHaving) {
-                if(b.getBookStatus().equals("null"))
+                if(b.getBookStatus().equals("not available"))
                     System.out.println(b.getBookName());
             }
 

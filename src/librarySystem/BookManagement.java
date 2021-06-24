@@ -29,7 +29,7 @@ public class BookManagement {
             if(b.getBookName().equals(book)&&b.getBookStatus().equals("available")) {
                 currentHaving=b;
                 flag=1;
-                b.setBookStatus("null");
+                b.setBookStatus("not available");
                 currentUser.booksHaving.add(new Book(currentHaving.getBookName(),currentHaving.getAuthorName(),currentHaving.getBookId(),currentHaving.getDepartment(),currentHaving.bookStatus));
                break;
             }
@@ -42,7 +42,7 @@ public class BookManagement {
         String book=sc.nextLine();
         int signal=0;
             for (Book bi : books) {
-                if (bi.getBookStatus().equals("null") && bi.getBookName().equals(book)) {
+                if (bi.getBookStatus().equals("not available") && bi.getBookName().equals(book)) {
                     bi.setBookStatus("available");
                     bi.getBookStatus();
                     signal = 1;
