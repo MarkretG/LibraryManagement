@@ -44,7 +44,7 @@ public class BookManagement {
             for (Book bi : books) {
                 if (bi.getBookStatus().equals("not available") && bi.getBookName().equals(book)) {
                     bi.setBookStatus("available");
-                    bi.getBookStatus();
+                    currentUser.booksHaving.remove(bi);
                     signal = 1;
                     break;
                 }
