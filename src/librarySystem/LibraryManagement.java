@@ -13,7 +13,6 @@ public class LibraryManagement {
         BookManagement.initialBooks();
         AdminManagement.initialAdmin();
         System.out.println("1.User Login" + " " + "2.admin login");
-        main:
         while (true) {
             int choice = sc.nextInt();
             switch (choice) {
@@ -92,7 +91,8 @@ public class LibraryManagement {
                                     BookManagement.removeBook(id);
                                     break;
                                 case 4:
-                                    continue main;
+                                    System.exit(0);
+                                    break;
                             }
                         }
                     }
