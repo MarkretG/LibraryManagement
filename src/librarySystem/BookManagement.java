@@ -30,7 +30,7 @@ public class BookManagement {
                 currentHaving=b;
                 flag=1;
                 b.setBookStatus("not available");
-                currentUser.booksHaving.add(new Book(currentHaving.getBookName(),currentHaving.getAuthorName(),currentHaving.getBookId(),currentHaving.getDepartment(),currentHaving.bookStatus));
+                currentUser.booksHaving.add(currentHaving);
                break;
             }
         }
@@ -45,6 +45,10 @@ public class BookManagement {
                 if (bi.getBookStatus().equals("not available") && bi.getBookName().equals(book)) {
                     bi.setBookStatus("available");
                     currentUser.booksHaving.remove(bi);
+                    for (Book b : User.booksHaving) {
+                        if (b.getBookStatus().equals("not available"))
+                            System.out.println(b.getBookName());
+                    }
                     signal = 1;
                     break;
                 }
@@ -53,21 +57,30 @@ public class BookManagement {
         if(signal==0)
             System.out.println("you never have this book");
     }
+    public static void addBook(String bName,String bAuthor,int bId,String bDept,String bStatus)
+    {
 
-    public void addBook(User currentUser,int bookId){
+        books.add(new Book(bName,bAuthor,bId,bDept,bStatus));
+        System.out.println("book add successfully");
+    }
+
+    public static void removeBook(int bId) {
         Book matchedBook = null;
-        for(Book book:books){
-            if(book.getBookId()==bookId){
-                matchedBook=book;
+        int flag=0;
+        for (Book book : books) {
+            if (book.getBookId() == bId&&book.getBookStatus().equals("available")) {
+                matchedBook = book;
+                books.remove(matchedBook);
+                for (Book b:books)
+                flag=1;
                 break;
             }
         }
-
-
-
-        currentUser.booksHaving.add(matchedBook);
-        matchedBook.isBooked =true;
-
+        if(flag==0)
+            System.out.println("entered book is not available;");
     }
+
+
+
 }
 
